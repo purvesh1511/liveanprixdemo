@@ -67,26 +67,26 @@
                 </div>
 
                 <!-- Mini Stats -->
-                <div class="flex flex-wrap items-center gap-5 sm:gap-8 mt-10 pt-6 border-t border-white/5 justify-center lg:justify-start">
-                    <div class="hero-mini-stat">
-                        <span class="text-xl sm:text-2xl font-black green-text counter" data-target="100">
+                <div class="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-3 mt-8 sm:mt-10 pt-6 border-t border-white/5 text-center sm:text-left justify-center lg:justify-start max-w-sm mx-auto sm:max-w-none lg:mx-0">
+                    <div class="hero-mini-stat flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-2">
+                        <span class="text-lg sm:text-xl md:text-2xl font-black green-text counter" data-target="100">
                             <span>100</span>+
                         </span>
-                        <p class="text-[11px] text-gray-500 mt-0.5">Projects Done</p>
+                        <p class="text-[10px] sm:text-[11px] text-gray-500 leading-tight">Projects Done</p>
                     </div>
-                    <div class="w-px h-8 bg-white/5"></div>
-                    <div class="hero-mini-stat">
-                        <span class="text-xl sm:text-2xl font-black blue-text counter" data-target="50">
+                    <div class="hidden sm:block w-px h-8 bg-white/5"></div>
+                    <div class="hero-mini-stat flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-2">
+                        <span class="text-lg sm:text-xl md:text-2xl font-black blue-text counter" data-target="50">
                             <span>50</span>+
                         </span>
-                        <p class="text-[11px] text-gray-500 mt-0.5">Happy Clients</p>
+                        <p class="text-[10px] sm:text-[11px] text-gray-500 leading-tight">Happy Clients</p>
                     </div>
-                    <div class="w-px h-8 bg-white/5"></div>
-                    <div class="hero-mini-stat">
-                        <span class="text-xl sm:text-2xl font-black green-text counter" data-target="98">
+                    <div class="hidden sm:block w-px h-8 bg-white/5"></div>
+                    <div class="hero-mini-stat flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-2">
+                        <span class="text-lg sm:text-xl md:text-2xl font-black green-text counter" data-target="98">
                             <span>98</span>%
                         </span>
-                        <p class="text-[11px] text-gray-500 mt-0.5">Satisfaction</p>
+                        <p class="text-[10px] sm:text-[11px] text-gray-500 leading-tight">Satisfaction</p>
                     </div>
                 </div>
             </div>
@@ -254,6 +254,22 @@
                                 <div class="contact-form-input-wrap">
                                     <i class="fas fa-phone input-icon"></i>
                                     <input type="tel" name="phone" placeholder="+91 63550 35217" class="contact-form-input">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="contact-form-label">Service Interested In *</label>
+                                <div class="contact-form-input-wrap">
+                                    <i class="fas fa-cogs input-icon"></i>
+                                    <select name="service" required
+                                        class="contact-form-input appearance-none cursor-pointer {{ old('service') ? '' : 'text-gray-500' }}">
+                                        <option value="" disabled selected>Select a Service</option>
+                                        <option value="Digital Marketing">Digital Marketing</option>
+                                        <option value="Advertising Services">Advertising Services</option>
+                                        <option value="Website Development">Website Development</option>
+                                        <option value="Software Development">Software Development</option>
+                                        <option value="Branding & Creative Services">Branding &amp; Creative Services</option>
+                                    </select>
                                 </div>
                             </div>
 

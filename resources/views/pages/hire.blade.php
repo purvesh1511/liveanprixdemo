@@ -65,26 +65,26 @@
                 </div>
 
                 <!-- Mini Stats -->
-                <div class="flex flex-wrap items-center gap-5 sm:gap-8 mt-10 pt-6 border-t border-white/5 justify-center lg:justify-start">
-                    <div class="hero-mini-stat">
-                        <span class="text-xl sm:text-2xl font-black green-text counter" data-target="100">
+                <div class="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-3 mt-8 sm:mt-10 pt-6 border-t border-white/5 text-center sm:text-left justify-center lg:justify-start max-w-sm mx-auto sm:max-w-none lg:mx-0">
+                    <div class="hero-mini-stat flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-2">
+                        <span class="text-lg sm:text-xl md:text-2xl font-black green-text counter" data-target="100">
                             <span>100</span>+
                         </span>
-                        <p class="text-[11px] text-gray-500 mt-0.5">Projects Done</p>
+                        <p class="text-[10px] sm:text-[11px] text-gray-500 leading-tight">Projects Done</p>
                     </div>
-                    <div class="w-px h-8 bg-white/5"></div>
-                    <div class="hero-mini-stat">
-                        <span class="text-xl sm:text-2xl font-black blue-text counter" data-target="50">
+                    <div class="hidden sm:block w-px h-8 bg-white/5"></div>
+                    <div class="hero-mini-stat flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-2">
+                        <span class="text-lg sm:text-xl md:text-2xl font-black blue-text counter" data-target="50">
                             <span>50</span>+
                         </span>
-                        <p class="text-[11px] text-gray-500 mt-0.5">Happy Clients</p>
+                        <p class="text-[10px] sm:text-[11px] text-gray-500 leading-tight">Happy Clients</p>
                     </div>
-                    <div class="w-px h-8 bg-white/5"></div>
-                    <div class="hero-mini-stat">
-                        <span class="text-xl sm:text-2xl font-black green-text counter" data-target="24">
+                    <div class="hidden sm:block w-px h-8 bg-white/5"></div>
+                    <div class="hero-mini-stat flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-2">
+                        <span class="text-lg sm:text-xl md:text-2xl font-black green-text counter" data-target="24">
                             <span>24</span>/7
                         </span>
-                        <p class="text-[11px] text-gray-500 mt-0.5">Support</p>
+                        <p class="text-[10px] sm:text-[11px] text-gray-500 leading-tight">Support</p>
                     </div>
                 </div>
             </div>

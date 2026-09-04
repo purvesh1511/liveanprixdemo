@@ -43,6 +43,10 @@ Route::get('/admin/login', [\App\Http\Controllers\Admin\AuthController::class, '
 Route::post('/admin/login', [\App\Http\Controllers\Admin\AuthController::class, 'login'])->name('admin.login.post');
 Route::post('/admin/logout', [\App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('admin.logout')->middleware('auth');
 
+// Admin Change Password routes
+Route::get('/admin/password', [\App\Http\Controllers\Admin\AuthController::class, 'showChangePassword'])->name('admin.password.edit')->middleware(['auth', 'admin']);
+Route::patch('/admin/password', [\App\Http\Controllers\Admin\AuthController::class, 'updatePassword'])->name('admin.password.update')->middleware(['auth', 'admin']);
+
 // Admin routes (protected)
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
@@ -68,11 +72,17 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     // Blog Posts
     Route::resource('blog', \App\Http\Controllers\Admin\BlogController::class);
 
-    // Inquiries
-    Route::get('inquiries', [\App\Http\Controllers\Admin\InquiryController::class, 'index'])->name('inquiries.index');
-    Route::get('inquiries/{id}', [\App\Http\Controllers\Admin\InquiryController::class, 'show'])->name('inquiries.show');
-    Route::patch('inquiries/{id}/read', [\App\Http\Controllers\Admin\InquiryController::class, 'markRead'])->name('inquiries.read');
-    Route::delete('inquiries/{id}', [\App\Http\Controllers\Admin\InquiryController::class, 'destroy'])->name('inquiries.destroy');
+    // Contact Inquiries
+    Route::get('contact-inquiries', [\App\Http\Controllers\Admin\ContactInquiryController::class, 'index'])->name('contact-inquiries.index');
+    Route::get('contact-inquiries/{id}', [\App\Http\Controllers\Admin\ContactInquiryController::class, 'show'])->name('contact-inquiries.show');
+    Route::patch('contact-inquiries/{id}/read', [\App\Http\Controllers\Admin\ContactInquiryController::class, 'markRead'])->name('contact-inquiries.read');
+    Route::delete('contact-inquiries/{id}', [\App\Http\Controllers\Admin\ContactInquiryController::class, 'destroy'])->name('contact-inquiries.destroy');
+
+    // Hire Inquiries
+    Route::get('hire-inquiries', [\App\Http\Controllers\Admin\HireInquiryController::class, 'index'])->name('hire-inquiries.index');
+    Route::get('hire-inquiries/{id}', [\App\Http\Controllers\Admin\HireInquiryController::class, 'show'])->name('hire-inquiries.show');
+    Route::patch('hire-inquiries/{id}/read', [\App\Http\Controllers\Admin\HireInquiryController::class, 'markRead'])->name('hire-inquiries.read');
+    Route::delete('hire-inquiries/{id}', [\App\Http\Controllers\Admin\HireInquiryController::class, 'destroy'])->name('hire-inquiries.destroy');
 
     // Subscribers
     Route::get('subscribers', [\App\Http\Controllers\Admin\SubscriberController::class, 'index'])->name('subscribers.index');

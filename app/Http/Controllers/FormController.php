@@ -37,6 +37,8 @@ class FormController extends Controller
             'email' => 'required|email|max:120',
             'phone' => 'nullable|string|max:15',
             'service' => 'required|string|max:100',
+            'budget' => 'nullable|string|max:100',
+            'timeline' => 'nullable|string|max:100',
             'details' => 'required|string|min:10|max:2000',
         ]);
 
@@ -45,6 +47,8 @@ class FormController extends Controller
             'email' => $validated['email'],
             'phone' => $validated['phone'] ?? null,
             'service_type' => $validated['service'],
+            'budget' => $validated['budget'] ?? null,
+            'timeline' => $validated['timeline'] ?? null,
             'message' => $validated['details'],
             'ip_address' => $request->ip(),
             'user_agent' => $request->userAgent(),

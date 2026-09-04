@@ -37,4 +37,23 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('admin.login');
     }
+
+    public function showChangePassword()
+    {
+        return view('admin.auth.change-password');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $validated = $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $user = $request->user();
+        $user->password = $validated['password'];
+        $user->save();
+
+        return back()->with('success', 'Password changed successfully.');
+    }
 }

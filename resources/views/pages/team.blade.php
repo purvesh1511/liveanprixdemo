@@ -96,7 +96,7 @@ $teamCount = $teamMembers->count();
                 </div>
 
                 <!-- Mini Stats -->
-                <div class="flex flex-wrap items-center gap-5 sm:gap-8 mt-10 pt-6 border-t border-white/5 justify-center lg:justify-start">
+                <div class="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-3 mt-8 sm:mt-10 pt-6 border-t border-white/5 text-center sm:text-left justify-center lg:justify-start max-w-sm mx-auto sm:max-w-none lg:mx-0">
                     @php
                     $teamHeroStats = [
                         ['value' => '10+', 'class' => 'green-text', 'label' => 'Years Experience'],
@@ -110,14 +110,14 @@ $teamCount = $teamMembers->count();
                     $target = (int) $val;
                     $suffix = str_replace((string) $target, '', $val);
                     @endphp
-                    <div class="hero-mini-stat">
-                        <span class="text-xl sm:text-2xl font-black {{ $s['class'] }} counter" data-target="{{ $target }}">
+                    <div class="hero-mini-stat flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-2">
+                        <span class="text-lg sm:text-xl md:text-2xl font-black {{ $s['class'] }} counter" data-target="{{ $target }}">
                             <span>{{ $target }}</span>{{ $suffix }}
                         </span>
-                        <p class="text-[11px] text-gray-500 mt-0.5">{{ $s['label'] }}</p>
+                        <p class="text-[10px] sm:text-[11px] text-gray-500 leading-tight">{{ $s['label'] }}</p>
                     </div>
                     @if($i < count($teamHeroStats) - 1)
-                    <div class="w-px h-8 bg-white/5"></div>
+                    <div class="hidden sm:block w-px h-8 bg-white/5"></div>
                     @endif
                     @endforeach
                 </div>
@@ -328,7 +328,7 @@ $teamCount = $teamMembers->count();
             <div class="relative flex items-start gap-6 sm:gap-8 md:gap-0 mb-12 md:mb-16 last:mb-0 fade-in-up" style="animation-delay: {{ $index * 0.15 }}s;">
 
                 <!-- DOT -->
-                <div class="absolute left-6 sm:left-8 md:left-1/2 md:-translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shrink-0 z-10 timeline-dot"
+                <div class="absolute left-[25px] sm:left-[33px] md:left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shrink-0 z-10 timeline-dot"
                      style="background: {{ $step['color'] }}15; border: 2px solid {{ $step['color'] }}40;">
                     <i class="fas {{ $step['icon'] }} text-lg sm:text-xl md:text-2xl" style="color: {{ $step['color'] }};"></i>
                 </div>

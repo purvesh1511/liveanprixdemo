@@ -190,7 +190,7 @@
                     <img src="{{ asset('assets/images/anprix-logo.webp') }}" alt="{{ config('anprix.name') }}" class="h-10 w-auto" loading="eager">
                     <!-- <span class="text-xl font-bold tracking-tight group-hover:text-anprix-primary transition-colors">
                         {{ config('anprix.name') }}
-                    </span> -->
+                    </span> --> 
                 </a>
 
                 {{-- Desktop Navigation --}}
@@ -414,6 +414,11 @@
                         Team
                     </a>
 
+                    <a href="{{ route('blog.index') }}"
+                       class="px-4 py-2 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('blog.*') ? 'text-anprix-primary' : 'text-gray-300 hover:text-white hover:bg-white/5' }}">
+                        Blog
+                    </a>
+
                     <a href="{{ route('contact') }}"
                        class="px-4 py-2 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('contact') ? 'text-anprix-primary' : 'text-gray-300 hover:text-white hover:bg-white/5' }}">
                         Contact
@@ -445,7 +450,7 @@
     {{-- ============================================================ --}}
     {{-- MOBILE MENU --}}
     {{-- ============================================================ --}}
-    <div id="mobile-menu" class="fixed inset-0 z-40 lg:hidden hidden">
+    <div id="mobile-menu" class="fixed inset-0 z-[60] lg:hidden hidden">
         {{-- Backdrop --}}
         <div id="mobile-menu-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
 
@@ -456,7 +461,7 @@
                 <div class="flex items-center justify-between mb-8">
                     <a href="{{ route('home') }}" class="flex items-center gap-2">
                         <img src="{{ asset('assets/images/anprix-logo.webp') }}" alt="{{ config('anprix.name') }}" class="h-8 w-auto">
-                        <span class="font-bold">{{ config('anprix.name') }}</span>
+                        <!-- <span class="font-bold">{{ config('anprix.name') }}</span> -->
                     </a>
                     <button id="mobile-menu-close" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -516,6 +521,10 @@
                     <a href="{{ route('team') }}"
                        class="block px-4 py-3 rounded-xl text-sm font-medium transition-colors {{ request()->routeIs('team') ? 'text-anprix-primary bg-anprix-primary/10' : 'text-gray-300 hover:text-white hover:bg-white/5' }}">
                         <i class="fas fa-users w-5 mr-3 text-center text-xs"></i>Team
+                    </a>
+                    <a href="{{ route('blog.index') }}"
+                       class="block px-4 py-3 rounded-xl text-sm font-medium transition-colors {{ request()->routeIs('blog.*') ? 'text-anprix-primary bg-anprix-primary/10' : 'text-gray-300 hover:text-white hover:bg-white/5' }}">
+                        <i class="fas fa-newspaper w-5 mr-3 text-center text-xs"></i>Blog
                     </a>
                     <a href="{{ route('contact') }}"
                        class="block px-4 py-3 rounded-xl text-sm font-medium transition-colors {{ request()->routeIs('contact') ? 'text-anprix-primary bg-anprix-primary/10' : 'text-gray-300 hover:text-white hover:bg-white/5' }}">
@@ -652,6 +661,9 @@
                             <a href="{{ route('team') }}" class="text-sm text-gray-400 hover:text-anprix-primary transition-colors">Our Team</a>
                         </li>
                         <li>
+                            <a href="{{ route('blog.index') }}" class="text-sm text-gray-400 hover:text-anprix-primary transition-colors">Blog</a>
+                        </li>
+                        <li>
                             <a href="{{ route('contact') }}" class="text-sm text-gray-400 hover:text-anprix-primary transition-colors">Contact Us</a>
                         </li>
                         <li>
@@ -700,10 +712,6 @@
                 <p class="text-sm text-gray-500">
                     &copy; {{ date('Y') }} {{ config('anprix.name') }}. All rights reserved.
                 </p>
-                <div class="flex items-center gap-6">
-                    <a href="{{ url('/privacy-policy') }}" class="text-sm text-gray-500 hover:text-gray-300 transition-colors">Privacy Policy</a>
-                    <a href="{{ url('/terms-of-service') }}" class="text-sm text-gray-500 hover:text-gray-300 transition-colors">Terms of Service</a>
-                </div>
             </div>
         </div>
     </footer>
@@ -762,7 +770,11 @@
         const hamburgerOpen = document.getElementById('hamburger-open');
         const hamburgerClose = document.getElementById('hamburger-close');
 
+        let isMobileMenuOpen = false;
+
         function openMobileMenu() {
+            if (isMobileMenuOpen) return;
+            isMobileMenuOpen = true;
             mobileMenu.classList.remove('hidden');
             requestAnimationFrame(function() {
                 mobilePanel.classList.remove('translate-x-full');
@@ -773,6 +785,8 @@
         }
 
         function closeMobileMenu() {
+            if (!isMobileMenuOpen) return;
+            isMobileMenuOpen = false;
             mobilePanel.classList.add('translate-x-full');
             setTimeout(function() {
                 mobileMenu.classList.add('hidden');
@@ -782,9 +796,21 @@
             document.body.style.overflow = '';
         }
 
-        if (mobileToggle) mobileToggle.addEventListener('click', openMobileMenu);
+        if (mobileToggle) mobileToggle.addEventListener('click', function() {
+            if (isMobileMenuOpen) { closeMobileMenu(); } else { openMobileMenu(); }
+        });
         if (mobileClose) mobileClose.addEventListener('click', closeMobileMenu);
         if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobileMenu);
+
+        // Close menu when a nav link inside the panel is clicked
+        document.querySelectorAll('#mobile-menu-panel a').forEach(function(link) {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Close with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeMobileMenu();
+        });
 
         // ─── Mobile services accordion ───────────────────────
         document.querySelectorAll('.mobile-services-toggle').forEach(function(btn) {

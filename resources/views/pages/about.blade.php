@@ -342,23 +342,24 @@
 
             @foreach($capabilities as $i => $c)
             <a href="{{ route('services') }}"
-               class="capability-row relative grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4 items-center px-3 sm:px-4 py-5 md:py-6 rounded-2xl border border-transparent"
+               class="capability-row relative block md:grid md:grid-cols-12 md:gap-4 md:items-center px-3 sm:px-4 py-5 md:py-6 rounded-2xl border border-transparent"
                style="--accent: {{ $c['color'] }};">
 
-                <div class="col-span-1 flex md:block items-center gap-3">
+                <div class="hidden md:block md:col-span-1">
                     <span class="text-2xl font-black" style="color: color-mix(in srgb, {{ $c['color'] }} 45%, transparent);">{{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}</span>
                 </div>
 
-                <div class="col-span-5 flex items-center gap-4">
-                    <div class="w-11 h-11 shrink-0 rounded-xl flex items-center justify-center" style="background: {{ $c['color'] }}15; color: {{ $c['color'] }};">
+                <div class="flex items-center gap-3 sm:gap-4 md:col-span-5 mb-3 md:mb-0">
+                    <span class="md:hidden text-xl font-black shrink-0" style="color: color-mix(in srgb, {{ $c['color'] }} 45%, transparent);">{{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}</span>
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 shrink-0 rounded-xl flex items-center justify-center" style="background: {{ $c['color'] }}15; color: {{ $c['color'] }};">
                         <i class="fas {{ $c['icon'] }}"></i>
                     </div>
-                    <h3 class="text-base md:text-lg font-bold">{{ $c['title'] }}</h3>
+                    <h3 class="text-base sm:text-lg font-bold leading-snug">{{ $c['title'] }}</h3>
                 </div>
 
-                <div class="col-span-6 flex items-center justify-between gap-4">
+                <div class="md:col-span-6 flex items-start justify-between gap-4">
                     <p class="text-gray-400 text-sm leading-6 md:leading-7">{{ $c['desc'] }}</p>
-                    <span class="capability-arrow shrink-0 text-[#00ffb3]">
+                    <span class="capability-arrow shrink-0 mt-1 md:mt-0 text-[#00ffb3]">
                         <i class="fas fa-arrow-right"></i>
                     </span>
                 </div>

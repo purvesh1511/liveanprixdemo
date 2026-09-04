@@ -13,14 +13,14 @@
 
 <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
     <div class="overflow-x-auto">
-        <table class="w-full text-sm">
+        <table id="team-table" class="w-full text-sm datatable">
             <thead class="bg-gray-50">
                 <tr>
                     <th class="text-left px-6 py-3 font-medium text-gray-500">Name</th>
                     <th class="text-left px-6 py-3 font-medium text-gray-500">Role</th>
                     <th class="text-left px-6 py-3 font-medium text-gray-500">Status</th>
                     <th class="text-left px-6 py-3 font-medium text-gray-500">Sort</th>
-                    <th class="text-right px-6 py-3 font-medium text-gray-500">Actions</th>
+                    <th class="text-right px-6 py-3 font-medium text-gray-500 no-sort">Actions</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
