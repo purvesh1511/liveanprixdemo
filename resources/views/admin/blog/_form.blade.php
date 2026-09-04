@@ -43,7 +43,7 @@
 
     <div>
         <label class="block text-sm font-medium text-gray-700 mb-1">Body (HTML)</label>
-        <textarea name="body" rows="12" class="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-[#00ffb3]/50 focus:border-[#00ffb3]">{{ old('body', $b->body ?? '') }}</textarea>
+        <textarea name="body" id="body-editor" rows="12" class="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-[#00ffb3]/50 focus:border-[#00ffb3]">{{ old('body', $b->body ?? '') }}</textarea>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -66,6 +66,35 @@
             <span class="text-sm font-medium text-gray-700">Published</span>
         </label>
     </div>
+
+    @push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/@ckeditor/ckeditor5-build-classic@41.4.2/build/ckeditor.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var textarea = document.getElementById('body-editor');
+        if (!textarea || typeof ClassicEditor === 'undefined') return;
+
+        ClassicEditor
+            .create(textarea, {
+                toolbar: {
+                    items: [
+                        'heading', '|',
+                        'bold', 'italic', 'underline', 'strikethrough', '|',
+                        'link', 'insertTable', 'blockQuote', 'codeBlock', '|',
+                        'bulletedList', 'numberedList', '|',
+                        'alignment', 'outdent', 'indent', '|',
+                        'undo', 'redo'
+                    ]
+                },
+                table: { contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells'] },
+                placeholder: 'Write your blog content here...'
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
+    });
+    </script>
+    @endpush
 
     <div class="border-t border-gray-200 pt-6">
         <h4 class="text-sm font-bold text-gray-700 mb-4">SEO Meta</h4>
