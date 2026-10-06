@@ -22,8 +22,8 @@
                 @forelse($inquiries as $inquiry)
                 <tr class="{{ !$inquiry->is_read ? 'bg-blue-50/30' : '' }}">
                     <td class="px-6 py-4 font-medium text-gray-800">{{ $inquiry->name }}</td>
-                    <td class="px-6 py-4 text-gray-500">{{ $inquiry->email }}</td>
-                    <td class="px-6 py-4 text-gray-500">{{ $inquiry->phone ?? '-' }}</td>
+                    <td class="px-6 py-4 text-gray-500"><a href="mailto:{{ $inquiry->email }}" class="hover:text-blue-500 hover:underline">{{ $inquiry->email }}</a></td>
+                    <td class="px-6 py-4 text-gray-500">@if($inquiry->phone)<a href="tel:{{ preg_replace('/[^0-9+]/', '', $inquiry->phone) }}" class="hover:text-blue-500 hover:underline">{{ $inquiry->phone }}</a>@else - @endif</td>
                     <td class="px-6 py-4 text-gray-500">{{ $inquiry->service_type ?? '-' }}</td>
                     <td class="px-6 py-4">
                         @if($inquiry->is_read)

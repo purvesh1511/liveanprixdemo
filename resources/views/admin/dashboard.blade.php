@@ -89,7 +89,7 @@
                     @forelse($recentInquiries as $inquiry)
                     <tr>
                         <td class="px-6 py-4 font-medium text-gray-800">{{ $inquiry->name }}</td>
-                        <td class="px-6 py-4 text-gray-500">{{ $inquiry->email }}</td>
+                        <td class="px-6 py-4 text-gray-500"><a href="mailto:{{ $inquiry->email }}" class="hover:text-blue-500 hover:underline">{{ $inquiry->email }}</a></td>
                         <td class="px-6 py-4 text-gray-500">{{ $inquiry->created_at->format('M d, Y') }}</td>
                         <td class="px-6 py-4">
                             @if($inquiry->is_read)

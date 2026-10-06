@@ -338,12 +338,12 @@
                                     <i class="fa-solid fa-envelope"></i>
                                 </div>
                                 <div>
-                                    <p class="text-gray-300 text-sm sm:text-base font-medium">
+                                    <a href="mailto:{{ config('anprix.email') }}" class="block text-gray-300 text-sm sm:text-base font-medium hover:text-[#00ffb3] transition-colors">
                                         {{ config('anprix.email') }}
-                                    </p>
-                                    <p class="text-gray-500 text-xs sm:text-sm">
+                                    </a>
+                                    <a href="mailto:{{ config('anprix.email_support') }}" class="block text-gray-500 text-xs sm:text-sm hover:text-[#00ffb3] transition-colors">
                                         {{ config('anprix.email_support') }}
-                                    </p>
+                                    </a>
                                 </div>
                             </div>
 
@@ -353,9 +353,9 @@
                                     <i class="fa-solid fa-phone"></i>
                                 </div>
                                 <div>
-                                    <p class="text-gray-300 text-sm sm:text-base font-medium">
+                                    <a href= + tel +  class="block text-gray-300 text-sm sm:text-base font-medium hover:text-[#00b7ff] transition-colors">
                                         {{ config('anprix.phone') }}
-                                    </p>
+                                    </a>
                                     <p class="text-gray-500 text-xs sm:text-sm">
                                         Mon-Fri, 9am-6pm
                                     </p>

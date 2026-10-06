@@ -20,11 +20,11 @@ class BlogController extends Controller
             ->with('category')
             ->orderBy('published_at', 'desc');
 
-        $posts = (clone $baseQuery)->paginate(9, ['*'], 'page', $page);
+        $posts = (clone $baseQuery)->paginate(10, ['*'], 'page', $page);
 
         // Clamp out-of-range pages (e.g. switching to a category with fewer pages)
         if ($posts->lastPage() > 0 && $posts->currentPage() > $posts->lastPage()) {
-            $posts = $baseQuery->paginate(9, ['*'], 'page', $posts->lastPage());
+            $posts = $baseQuery->paginate(10, ['*'], 'page', $posts->lastPage());
         }
 
         $posts->appends($request->query());

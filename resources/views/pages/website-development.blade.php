@@ -472,7 +472,7 @@
 
                 <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-5">
 
-                    <a href="{{ route('contact') }}"
+                    <a href="tel:{{ preg_replace('/[^0-9+]/', '', config('anprix.phone')) }}"
                        class="btn-primary px-8 md:px-10 py-3.5 md:py-4 rounded-2xl text-base md:text-lg inline-flex items-center justify-center gap-2 transition hover:scale-105">
                         <i class="fas fa-phone"></i>
                         Schedule Free Discovery Call

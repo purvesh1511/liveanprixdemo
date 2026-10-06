@@ -40,7 +40,7 @@
             </div>
             <div>
                 <label class="text-xs text-gray-500 uppercase tracking-wider">Phone</label>
-                <p class="text-gray-800 font-medium mt-1">{{ $inquiry->phone ?? '-' }}</p>
+                <p class="text-gray-800 font-medium mt-1">@if($inquiry->phone)<a href="tel:{{ preg_replace('/[^0-9+]/', '', $inquiry->phone) }}" class="text-blue-500 hover:underline">{{ $inquiry->phone }}</a>@else - @endif</p>
             </div>
             <div>
                 <label class="text-xs text-gray-500 uppercase tracking-wider">Date</label>

@@ -681,7 +681,7 @@
                             <span class="text-sm text-gray-400">{{ config('anprix.address') }}</span>
                         </li>
                         <li>
-                            <a href="tel:{{ config('anprix.phone') }}" class="flex items-center gap-3 text-sm text-gray-400 hover:text-anprix-primary transition-colors">
+                            <a href="tel:{{ preg_replace('/[^0-9+]/', '', config('anprix.phone')) }}" class="flex items-center gap-3 text-sm text-gray-400 hover:text-anprix-primary transition-colors">
                                 <i class="fas fa-phone text-anprix-primary text-xs"></i>
                                 {{ config('anprix.phone') }}
                             </a>

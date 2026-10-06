@@ -56,18 +56,8 @@
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-6">{{ $post->title }}</h1>
 
             <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-400">
-                @if($post->author)
-                <div class="flex items-center gap-2">
-                    <div class="w-9 h-9 rounded-full bg-gradient-to-br from-[#00ffb3] to-[#00b7ff] flex items-center justify-center text-black text-sm font-black">
-                        {{ strtoupper(substr($post->author, 0, 1)) }}
-                    </div>
-                    <div class="leading-tight">
-                        <p class="text-white font-semibold">{{ $post->author }}</p>
-                        @if($post->published_at)
-                        <p class="text-gray-500 text-xs"><i class="fas fa-calendar-alt mr-1"></i>{{ $post->published_at->format('M d, Y') }}</p>
-                        @endif
-                    </div>
-                </div>
+                @if($post->published_at)
+                <span><i class="fas fa-calendar-alt mr-1"></i> {{ $post->published_at->format('M d, Y') }}</span>
                 @endif
                 @if($readingTime)
                 <span><i class="far fa-clock mr-1"></i> {{ $readingTime }} min read</span>

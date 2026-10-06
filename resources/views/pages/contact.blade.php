@@ -113,7 +113,7 @@
                             </div>
                             <div class="text-left">
                                 <p class="text-[10px] text-gray-500 uppercase tracking-wide">Email Us</p>
-                                <p class="text-sm font-semibold">{{ config('anprix.email') }}</p>
+                                <a href="mailto:{{ config('anprix.email') }}" class="text-sm font-semibold hover:text-[#00ffb3] transition-colors">{{ config('anprix.email') }}</a>
                             </div>
                         </div>
                     </div>
@@ -126,7 +126,7 @@
                             </div>
                             <div class="text-left">
                                 <p class="text-[10px] text-gray-500 uppercase tracking-wide">Call Us</p>
-                                <p class="text-sm font-semibold">{{ config('anprix.phone') }}</p>
+                                <a href="tel:{{ preg_replace('/[^0-9+]/', '', config('anprix.phone')) }}" class="text-sm font-semibold hover:text-[#00b7ff] transition-colors">{{ config('anprix.phone') }}</a>
                             </div>
                         </div>
                     </div>
@@ -169,7 +169,7 @@
                         </div>
                         <div class="min-w-0">
                             <p class="text-gray-500 uppercase tracking-[3px] text-[11px] mb-1">Email</p>
-                            <h3 class="text-lg sm:text-xl font-bold truncate">{{ config('anprix.email') }}</h3>
+                            <h3 class="text-lg sm:text-xl font-bold truncate"><a href="mailto:{{ config('anprix.email') }}" class="hover:text-[#00ffb3] transition-colors">{{ config('anprix.email') }}</a></h3>
                             <a href="mailto:{{ config('anprix.email') }}" class="text-xs text-[#00ffb3] hover:underline inline-flex items-center gap-1 mt-1.5">Send a message <i class="fas fa-arrow-right text-[10px]"></i></a>
                         </div>
                     </div>
@@ -181,9 +181,9 @@
                         </div>
                         <div>
                             <p class="text-gray-500 uppercase tracking-[3px] text-[11px] mb-1">Phone</p>
-                            <h3 class="text-lg sm:text-xl font-bold">{{ config('anprix.phone') }}</h3>
+                            <h3 class="text-lg sm:text-xl font-bold"><a href="tel:{{ preg_replace('/[^0-9+]/', '', config('anprix.phone')) }}" class="hover:text-[#00b7ff] transition-colors">{{ config('anprix.phone') }}</a></h3>
                             <div class="flex items-center gap-3 mt-1.5">
-                                <a href="tel:{{ config('anprix.phone') }}" class="text-xs text-[#00b7ff] hover:underline inline-flex items-center gap-1">Call now <i class="fas fa-arrow-right text-[10px]"></i></a>
+                                <a href="tel:{{ preg_replace('/[^0-9+]/', '', config('anprix.phone')) }}" class="text-xs text-[#00b7ff] hover:underline inline-flex items-center gap-1">Call now <i class="fas fa-arrow-right text-[10px]"></i></a>
                                 <span class="text-gray-600">|</span>
                                 <span class="text-xs text-gray-500 flex items-center gap-1"><i class="fab fa-whatsapp icon-hover text-[#25D366]"></i> WhatsApp</span>
                             </div>

@@ -22,7 +22,7 @@
             <tbody class="divide-y divide-gray-100">
                 @forelse($subscribers as $subscriber)
                 <tr>
-                    <td class="px-6 py-4 font-medium text-gray-800">{{ $subscriber->email }}</td>
+                    <td class="px-6 py-4 font-medium text-gray-800"><a href="mailto:{{ $subscriber->email }}" class="hover:text-blue-500 hover:underline">{{ $subscriber->email }}</a></td>
                     <td class="px-6 py-4">
                         @if($subscriber->is_active ?? $subscriber->status === 'active')
                             <span class="px-2 py-1 text-xs rounded-full bg-green-50 text-green-600">Active</span>
